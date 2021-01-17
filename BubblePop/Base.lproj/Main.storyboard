@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lb5-pS-Tq0">
-    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="Lb5-pS-Tq0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g27-eJ-b39">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -27,22 +27,22 @@
         <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="StartViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cX7-d0-la7">
-                                <rect key="frame" x="44" y="44" width="808" height="349"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsk-ci-Zeh" userLabel="Game Tittle">
-                                        <rect key="frame" x="0.0" y="0.0" width="808" height="172"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="384.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="b1" translatesAutoresizingMaskIntoConstraints="NO" id="N9V-a1-Xlh">
-                                                <rect key="frame" x="5" y="5" width="798" height="162"/>
+                                                <rect key="frame" x="5" y="5" width="404" height="374.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BubblePop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3w-Ez-NYd">
-                                                <rect key="frame" x="0.0" y="64.5" width="808" height="43"/>
+                                                <rect key="frame" x="0.0" y="171" width="414" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                 <color key="textColor" systemColor="systemPurpleColor"/>
                                                 <nil key="highlightedColor"/>
@@ -59,10 +59,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYc-AY-HeL">
-                                        <rect key="frame" x="0.0" y="177" width="808" height="172"/>
+                                        <rect key="frame" x="0.0" y="389.5" width="414" height="384.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSw-wh-lts">
-                                                <rect key="frame" x="329" y="11" width="150" height="50"/>
+                                                <rect key="frame" x="132" y="117.5" width="150" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="3xP-iN-wKm"/>
@@ -77,7 +77,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01F-8X-MHU">
-                                                <rect key="frame" x="329" y="86" width="150" height="50"/>
+                                                <rect key="frame" x="132" y="192.5" width="150" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Bbz-sA-zas"/>
@@ -127,16 +127,16 @@
         <!--Game Setting-->
         <scene sceneID="r9l-0G-ywv">
             <objects>
-                <viewController id="cl9-Ho-2Pg" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cl9-Ho-2Pg" customClass="SettingViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Srz-Bi-RQa">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3i0-Xf-xyf">
-                                <rect key="frame" x="54" y="69" width="788" height="299"/>
+                                <rect key="frame" x="10" y="113" width="394" height="724"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hmd-Yc-059">
-                                        <rect key="frame" x="302.5" y="0.0" width="183" height="50"/>
+                                        <rect key="frame" x="105.5" y="0.0" width="183" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="3Kd-e2-Pa8"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="mWM-LO-qcn"/>
@@ -145,21 +145,21 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <slider opaque="NO" tag="-2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="5" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-2i-Ww2" userLabel="Game Time">
-                                        <rect key="frame" x="232" y="96.5" width="324" height="31"/>
+                                        <rect key="frame" x="27" y="238" width="340" height="31"/>
                                         <color key="tintColor" systemColor="systemPurpleColor"/>
                                         <accessibility key="accessibilityConfiguration" label="Game Time">
                                             <accessibilityTraits key="traits" none="YES"/>
                                         </accessibility>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="5" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="zZZ-4t-tW1" userLabel="Bubble Numbers">
-                                        <rect key="frame" x="232" y="172.5" width="324" height="31"/>
+                                        <rect key="frame" x="27" y="456" width="340" height="31"/>
                                         <color key="tintColor" systemColor="systemPurpleColor"/>
                                         <accessibility key="accessibilityConfiguration" label="Bubble Numbers">
                                             <accessibilityTraits key="traits" none="YES"/>
                                         </accessibility>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzF-cz-9yn">
-                                        <rect key="frame" x="319" y="249" width="150" height="50"/>
+                                        <rect key="frame" x="122" y="674" width="150" height="50"/>
                                         <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="5GO-Pi-hE8"/>
@@ -196,31 +196,31 @@
         <!--Game Play-->
         <scene sceneID="siD-Mg-C3w">
             <objects>
-                <viewController id="F97-xI-wkS" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F97-xI-wkS" customClass="GameViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JtJ-N1-MEf">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="C77-zY-svT">
-                                <rect key="frame" x="54" y="54" width="788" height="329"/>
+                                <rect key="frame" x="10" y="98" width="394" height="754"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-KW-5b7" userLabel="Game Stats">
-                                        <rect key="frame" x="0.0" y="0.0" width="788" height="28.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="453.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rvA-kr-ZmU">
-                                                <rect key="frame" x="0.0" y="1" width="58.5" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="213.5" width="58.5" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" systemColor="systemPurpleColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p8R-kZ-Nsy">
-                                                <rect key="frame" x="372" y="1" width="47.5" height="26.5"/>
+                                                <rect key="frame" x="175" y="213.5" width="47.5" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" systemColor="systemPurpleColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vut-VK-8qj">
-                                                <rect key="frame" x="732.5" y="1" width="55.5" height="26.5"/>
+                                                <rect key="frame" x="338.5" y="213.5" width="55.5" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" systemColor="systemPurpleColor"/>
                                                 <nil key="highlightedColor"/>
@@ -228,7 +228,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8a-jv-8vz">
-                                        <rect key="frame" x="0.0" y="33.5" width="788" height="295.5"/>
+                                        <rect key="frame" x="0.0" y="458.5" width="394" height="295.5"/>
                                         <color key="backgroundColor" systemColor="systemTealColor"/>
                                     </view>
                                 </subviews>
@@ -254,20 +254,20 @@
         <!--High Score-->
         <scene sceneID="v4K-F0-vI3">
             <objects>
-                <viewController id="iNf-PJ-BQY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HighScoreViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iNf-PJ-BQY" customClass="HighScoreViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Ng-gg-fjg">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P6c-gc-CGz">
-                                <rect key="frame" x="44" y="44" width="808" height="349"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="highScoreCell" textLabel="xGf-pJ-WIl" detailTextLabel="Vh2-ML-cne" style="IBUITableViewCellStyleValue1" id="GrV-xU-REo">
-                                        <rect key="frame" x="0.0" y="28" width="808" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="highScoreCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="highScoreCell" textLabel="xGf-pJ-WIl" detailTextLabel="Vh2-ML-cne" style="IBUITableViewCellStyleValue1" id="GrV-xU-REo" userLabel="highScoreCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GrV-xU-REo" id="5J3-sB-QBl">
-                                            <rect key="frame" x="0.0" y="0.0" width="808" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xGf-pJ-WIl">
@@ -278,7 +278,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vh2-ML-cne">
-                                                    <rect key="frame" x="744" y="12" width="44" height="20.5"/>
+                                                    <rect key="frame" x="350" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -288,6 +288,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="iNf-PJ-BQY" id="ML8-h4-VWA"/>
+                                    <outlet property="delegate" destination="iNf-PJ-BQY" id="Gze-Kr-XsO"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zhq-cd-g1N"/>
@@ -302,6 +306,9 @@
                     <navigationItem key="navigationItem" title="High Score" id="VeX-rT-HWB">
                         <barButtonItem key="backBarButtonItem" title="Back" id="GHG-4L-QYZ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="highScoreTableView" destination="P6c-gc-CGz" id="7JJ-Gd-IPS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gD-oD-tgG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
