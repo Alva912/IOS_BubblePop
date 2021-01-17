@@ -31,8 +31,6 @@ class HighScoreViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         print("\(highScoreArray)");
-        
-        
     }
 
 }

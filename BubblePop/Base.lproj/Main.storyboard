@@ -73,7 +73,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="cl9-Ho-2Pg" kind="show" id="d7u-Pd-CuM"/>
+                                                    <segue destination="cl9-Ho-2Pg" kind="show" identifier="newGameSegue" id="d7u-Pd-CuM"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01F-8X-MHU">
@@ -145,14 +145,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <slider opaque="NO" tag="-2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="5" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-2i-Ww2" userLabel="Game Time">
-                                        <rect key="frame" x="27" y="238" width="340" height="31"/>
+                                        <rect key="frame" x="19" y="238" width="356" height="31"/>
                                         <color key="tintColor" systemColor="systemPurpleColor"/>
                                         <accessibility key="accessibilityConfiguration" label="Game Time">
                                             <accessibilityTraits key="traits" none="YES"/>
                                         </accessibility>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="5" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="zZZ-4t-tW1" userLabel="Bubble Numbers">
-                                        <rect key="frame" x="27" y="456" width="340" height="31"/>
+                                        <rect key="frame" x="19" y="456" width="356" height="31"/>
                                         <color key="tintColor" systemColor="systemPurpleColor"/>
                                         <accessibility key="accessibilityConfiguration" label="Bubble Numbers">
                                             <accessibilityTraits key="traits" none="YES"/>
@@ -170,7 +170,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="F97-xI-wkS" kind="show" id="gab-re-b5Z"/>
+                                            <action selector="startButtonOnClick:" destination="cl9-Ho-2Pg" eventType="touchUpInside" id="0KA-e0-4wR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -188,6 +188,13 @@
                     <navigationItem key="navigationItem" title="Game Setting" id="fnq-t0-WXJ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="aSB-EB-5Nx"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="hmd-Yc-059" id="q6d-DE-I0G"/>
+                        <outlet property="numberSlider" destination="zZZ-4t-tW1" id="KfW-Fj-Xky"/>
+                        <outlet property="startButton" destination="bzF-cz-9yn" id="zuH-SO-bNJ"/>
+                        <outlet property="timeSlider" destination="fzI-2i-Ww2" id="JhF-U7-pyH"/>
+                        <segue destination="F97-xI-wkS" kind="show" identifier="startGameSegue" id="ecR-TS-bfC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AY-0b-2I0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -201,26 +208,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="C77-zY-svT">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="C77-zY-svT">
                                 <rect key="frame" x="10" y="98" width="394" height="754"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-KW-5b7" userLabel="Game Stats">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="453.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-KW-5b7" userLabel="Game Stats">
+                                        <rect key="frame" x="74.5" y="0.0" width="245" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rvA-kr-ZmU">
-                                                <rect key="frame" x="0.0" y="213.5" width="58.5" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="58.5" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" systemColor="systemPurpleColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p8R-kZ-Nsy">
-                                                <rect key="frame" x="175" y="213.5" width="47.5" height="26.5"/>
+                                                <rect key="frame" x="99.5" y="0.0" width="47.5" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" systemColor="systemPurpleColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vut-VK-8qj">
-                                                <rect key="frame" x="338.5" y="213.5" width="55.5" height="26.5"/>
+                                                <rect key="frame" x="189.5" y="0.0" width="55.5" height="25"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" systemColor="systemPurpleColor"/>
                                                 <nil key="highlightedColor"/>
@@ -228,7 +235,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8a-jv-8vz">
-                                        <rect key="frame" x="0.0" y="458.5" width="394" height="295.5"/>
+                                        <rect key="frame" x="0.0" y="30" width="394" height="724"/>
                                         <color key="backgroundColor" systemColor="systemTealColor"/>
                                     </view>
                                 </subviews>
@@ -246,6 +253,10 @@
                     <navigationItem key="navigationItem" title="Game Play" id="i9D-Jj-45c">
                         <barButtonItem key="backBarButtonItem" title="Back" id="7CG-iY-2Cp"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameLabel" destination="rvA-kr-ZmU" id="oZ1-0m-h4a"/>
+                        <outlet property="remainTimeLabel" destination="p8R-kZ-Nsy" id="reI-Ym-Tm3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bd8-bN-xkF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
