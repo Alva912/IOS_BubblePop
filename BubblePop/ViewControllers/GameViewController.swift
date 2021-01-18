@@ -26,10 +26,12 @@ class GameViewController: UIViewController {
         
         // Retrive data from UserDefaults
         let defaults = UserDefaults.standard;
-        name = defaults.string(forKey: "PlayerName") ?? "Hello";
+        if let name = defaults.string(forKey: "PlayerName") {
+            self.name = name;
+        }
         remainTime = defaults.integer(forKey: "RemainTime");
         numberLimit = defaults.integer(forKey: "NumberLimit");
-
+        
         // Display data to UI
         nameLabel.text = name;
         remainTimeLabel.text = String(remainTime);
@@ -51,6 +53,11 @@ class GameViewController: UIViewController {
             // Stop the timer
             timer.invalidate();
             print("Game is over!");
+            
+            // Pass data
+            let defaults = UserDefaults.standard;
+            defaults.set(score, forKey: "Score");
+            
             // Go to next screen
             self.performSegue(withIdentifier: "gameOverSegue", sender: nil);
         } else {
@@ -69,8 +76,8 @@ class GameViewController: UIViewController {
             
             for i in 1...bubbleNumber - bubbleArray.count {
                 print(i);
-                let xAxis = Int.random(in: 50...300);
-                let yAxis = Int.random(in: 50...300);
+                let xAxis = Int.random(in: 60...600);
+                let yAxis = Int.random(in: 60...600);
                 let bubble = UIButton.bubbleButton(frame: CGRect(x: xAxis, y: yAxis, width: 50, height: 50), color: BubbleColor.pink);
                 bubble.addTarget(self, action: #selector(bubblePressed(_:)), for: .touchUpInside);
                 
