@@ -30,6 +30,9 @@ class SettingViewController: UIViewController {
                 let remainTime = timeSlider.value;
                 defaults.set(remainTime, forKey: "RemainTime");
                 
+                let numberLimit = numberSlider.value;
+                defaults.set(numberLimit, forKey: "NumberLimit");
+                
                 // Trigger segue
                 print("Trigger segue for", name);
                 self.performSegue(withIdentifier: "startGameSegue", sender: nil);

@@ -151,7 +151,7 @@
                                             <accessibilityTraits key="traits" none="YES"/>
                                         </accessibility>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="5" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="zZZ-4t-tW1" userLabel="Number Slider">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="5" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="zZZ-4t-tW1" userLabel="Number Slider">
                                         <rect key="frame" x="78" y="422.5" width="238" height="31"/>
                                         <color key="tintColor" systemColor="systemPurpleColor"/>
                                         <accessibility key="accessibilityConfiguration" label="Bubble Numbers">
@@ -196,7 +196,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="nameTextField" destination="hmd-Yc-059" id="q6d-DE-I0G"/>
-                        <outlet property="numberSlider" destination="zZZ-4t-tW1" id="IdU-wU-1TA"/>
+                        <outlet property="numberSlider" destination="zZZ-4t-tW1" id="fyl-8R-woq"/>
                         <outlet property="startButton" destination="bzF-cz-9yn" id="zuH-SO-bNJ"/>
                         <outlet property="timeSlider" destination="fzI-2i-Ww2" id="ZZi-c5-FIx"/>
                         <segue destination="F97-xI-wkS" kind="show" identifier="startGameSegue" id="ecR-TS-bfC"/>
@@ -313,6 +313,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="High Score" id="VeX-rT-HWB">
                         <barButtonItem key="backBarButtonItem" title="Back" id="GHG-4L-QYZ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="GCJ-hZ-OBK"/>
                     </navigationItem>
                     <connections>
                         <outlet property="highScoreTableView" destination="P6c-gc-CGz" id="7JJ-Gd-IPS"/>
@@ -324,7 +325,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9LD-fl-CnD"/>
+        <segue reference="Zkx-11-zLQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="b1" width="341" height="341"/>
