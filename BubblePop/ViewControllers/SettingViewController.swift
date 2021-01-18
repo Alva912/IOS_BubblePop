@@ -10,14 +10,16 @@ import UIKit
 class SettingViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var timeSlider: UISlider!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var numberSlider: UISlider!
-    
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var startButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        timeLabel.text = "\(Int(timeSlider.value))";
+        numberLabel.text = "\(Int(numberSlider.value))";
     }
     
     @IBAction func startButtonOnClick(_ sender: Any) {
@@ -46,4 +48,13 @@ class SettingViewController: UIViewController {
         }
     }
     
+    @IBAction func timeSliderValueChanged(_ sender: UISlider) {
+        var currentValue = Int(sender.value);
+        timeLabel.text = "\(currentValue)";
+    }
+    
+    @IBAction func numberSliderValueChanged(_ sender: UISlider) {
+        var currentValue = Int(sender.value);
+        numberLabel.text = "\(currentValue)";
+    }
 }

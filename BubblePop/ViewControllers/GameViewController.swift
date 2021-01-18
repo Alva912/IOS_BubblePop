@@ -71,7 +71,7 @@ class GameViewController: UIViewController {
                 print(i);
                 let xAxis = Int.random(in: 50...300);
                 let yAxis = Int.random(in: 50...300);
-                let bubble = UIButton.bubbleButton(frame: CGRect(x: xAxis, y: yAxis, width: 50, height: 50));
+                let bubble = UIButton.bubbleButton(frame: CGRect(x: xAxis, y: yAxis, width: 50, height: 50), color: BubbleColor.pink);
                 bubble.addTarget(self, action: #selector(bubblePressed(_:)), for: .touchUpInside);
                 
                 self.view.addSubview(bubble);

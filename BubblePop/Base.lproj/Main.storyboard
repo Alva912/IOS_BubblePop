@@ -132,32 +132,109 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3i0-Xf-xyf">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3i0-Xf-xyf" userLabel="Settings Stack View">
                                 <rect key="frame" x="10" y="138" width="394" height="674"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hmd-Yc-059">
-                                        <rect key="frame" x="105.5" y="0.0" width="183" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="3Kd-e2-Pa8"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="mWM-LO-qcn"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <slider opaque="NO" tag="-2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="5" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-2i-Ww2" userLabel="Time Slider">
-                                        <rect key="frame" x="78" y="221.5" width="238" height="31"/>
-                                        <color key="tintColor" systemColor="systemPurpleColor"/>
-                                        <accessibility key="accessibilityConfiguration" label="Game Time">
-                                            <accessibilityTraits key="traits" none="YES"/>
-                                        </accessibility>
-                                    </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="5" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="zZZ-4t-tW1" userLabel="Number Slider">
-                                        <rect key="frame" x="78" y="422.5" width="238" height="31"/>
-                                        <color key="tintColor" systemColor="systemPurpleColor"/>
-                                        <accessibility key="accessibilityConfiguration" label="Bubble Numbers">
-                                            <accessibilityTraits key="traits" none="YES"/>
-                                        </accessibility>
-                                    </slider>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wgi-bp-5Vv" userLabel="Top Stack View">
+                                        <rect key="frame" x="82" y="0.0" width="230" height="105"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdi-Ew-oOe">
+                                                <rect key="frame" x="55" y="0.0" width="120" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" systemColor="systemPurpleColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hmd-Yc-059">
+                                                <rect key="frame" x="0.0" y="55" width="230" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="3Kd-e2-Pa8"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="230" id="mWM-LO-qcn"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <variation key="heightClass=compact" axis="horizontal"/>
+                                        <variation key="heightClass=regular-widthClass=compact" spacing="5"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rhO-Sh-oUD" userLabel="Mid Stack View">
+                                        <rect key="frame" x="72" y="219" width="250" height="65"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lc-Vi-Xug">
+                                                <rect key="frame" x="70.5" y="0.0" width="109" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" systemColor="systemPurpleColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9GH-DB-mae">
+                                                <rect key="frame" x="0.0" y="35" width="250" height="30"/>
+                                                <subviews>
+                                                    <slider opaque="NO" tag="-2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="5" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-2i-Ww2" userLabel="Time Slider">
+                                                        <rect key="frame" x="-2" y="0.0" width="204" height="31"/>
+                                                        <color key="tintColor" systemColor="systemPurpleColor"/>
+                                                        <accessibility key="accessibilityConfiguration" label="Game Time">
+                                                            <accessibilityTraits key="traits" none="YES"/>
+                                                        </accessibility>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="200" id="llA-bh-HxB"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="timeSliderValueChanged:" destination="cl9-Ho-2Pg" eventType="valueChanged" id="3tj-ag-W5j"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPV-lw-UL6">
+                                                        <rect key="frame" x="210" y="1.5" width="40" height="26.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="N0Z-kO-ckE"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <color key="textColor" systemColor="systemPurpleColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <variation key="heightClass=compact" axis="horizontal"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-gN-EHj" userLabel="Bot Stack View">
+                                        <rect key="frame" x="72" y="417.5" width="250" height="65"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bubble Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gss-2H-Sx1">
+                                                <rect key="frame" x="50.5" y="0.0" width="149.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" systemColor="systemPurpleColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e9a-d1-sIh">
+                                                <rect key="frame" x="0.0" y="35" width="250" height="30"/>
+                                                <subviews>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="5" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="zZZ-4t-tW1" userLabel="Number Slider">
+                                                        <rect key="frame" x="-2" y="0.0" width="204" height="31"/>
+                                                        <color key="tintColor" systemColor="systemPurpleColor"/>
+                                                        <accessibility key="accessibilityConfiguration" label="Bubble Numbers">
+                                                            <accessibilityTraits key="traits" none="YES"/>
+                                                        </accessibility>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="200" id="hiH-RQ-k5d"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="numberSliderValueChanged:" destination="cl9-Ho-2Pg" eventType="valueChanged" id="F4k-MH-9ff"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2y0-Y6-w6Z">
+                                                        <rect key="frame" x="210" y="2" width="40" height="26.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="hI0-06-84n"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <color key="textColor" systemColor="systemPurpleColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <variation key="heightClass=compact" axis="horizontal"/>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzF-cz-9yn">
                                         <rect key="frame" x="122" y="624" width="150" height="50"/>
                                         <color key="backgroundColor" systemColor="systemPurpleColor"/>
@@ -174,12 +251,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="fzI-2i-Ww2" firstAttribute="leading" secondItem="3i0-Xf-xyf" secondAttribute="leading" constant="80" id="19C-fj-RKI"/>
-                                    <constraint firstAttribute="trailing" secondItem="zZZ-4t-tW1" secondAttribute="trailing" constant="80" id="7Xf-oM-bhM"/>
-                                    <constraint firstAttribute="trailing" secondItem="fzI-2i-Ww2" secondAttribute="trailing" constant="80" id="K8W-sn-BU8"/>
-                                    <constraint firstItem="zZZ-4t-tW1" firstAttribute="leading" secondItem="3i0-Xf-xyf" secondAttribute="leading" constant="80" id="XF3-hQ-DeK"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kpw-X9-oil"/>
@@ -187,8 +258,14 @@
                         <constraints>
                             <constraint firstItem="3i0-Xf-xyf" firstAttribute="leading" secondItem="Kpw-X9-oil" secondAttribute="leading" constant="10" id="7AA-8T-PbM"/>
                             <constraint firstItem="3i0-Xf-xyf" firstAttribute="trailing" secondItem="Kpw-X9-oil" secondAttribute="trailing" constant="-10" id="MP7-GO-iFF"/>
-                            <constraint firstItem="3i0-Xf-xyf" firstAttribute="top" relation="lessThanOrEqual" secondItem="Kpw-X9-oil" secondAttribute="top" constant="50" id="ZSD-Bu-Riw"/>
-                            <constraint firstItem="3i0-Xf-xyf" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Kpw-X9-oil" secondAttribute="bottom" constant="-50" id="mv7-eg-5un"/>
+                            <constraint firstItem="3i0-Xf-xyf" firstAttribute="top" secondItem="Kpw-X9-oil" secondAttribute="top" constant="5" id="ZSD-Bu-Riw">
+                                <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="150"/>
+                            </constraint>
+                            <constraint firstItem="3i0-Xf-xyf" firstAttribute="bottom" secondItem="Kpw-X9-oil" secondAttribute="bottom" constant="-10" id="mv7-eg-5un">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-50"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="-150"/>
+                            </constraint>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Game Setting" id="fnq-t0-WXJ">
@@ -196,8 +273,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="nameTextField" destination="hmd-Yc-059" id="q6d-DE-I0G"/>
+                        <outlet property="numberLabel" destination="2y0-Y6-w6Z" id="Zfo-MJ-u05"/>
                         <outlet property="numberSlider" destination="zZZ-4t-tW1" id="fyl-8R-woq"/>
                         <outlet property="startButton" destination="bzF-cz-9yn" id="zuH-SO-bNJ"/>
+                        <outlet property="timeLabel" destination="bPV-lw-UL6" id="ya9-nB-fXf"/>
                         <outlet property="timeSlider" destination="fzI-2i-Ww2" id="ZZi-c5-FIx"/>
                         <segue destination="F97-xI-wkS" kind="show" identifier="startGameSegue" id="ecR-TS-bfC"/>
                     </connections>
@@ -325,7 +404,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Zkx-11-zLQ"/>
+        <segue reference="9LD-fl-CnD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="b1" width="341" height="341"/>
