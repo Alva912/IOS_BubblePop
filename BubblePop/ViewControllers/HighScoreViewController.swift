@@ -49,22 +49,6 @@ class HighScoreViewController: UIViewController {
             print("No new game data");
         }
         
-        //        do {
-        //            let fileURL = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("highScore.json");
-        //            try encoder.encode(lastHighScore).write(to: fileURL);
-        //        } catch {
-        //            print(error);
-        //        }
-        //
-        //        do {
-        //            let fileURL = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("highScore.json");
-        //            let data = try Data(contentsOf: fileURL);
-        //            let highScores = try JSONDecoder().decode(HighScore.self, from: data);
-        //            print(highScores);
-        //        } catch {
-        //            print(error);
-        //        }
-        
     }
     
     func readFromJSON() {

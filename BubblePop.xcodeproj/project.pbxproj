@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		360B505925B5143700B46F14 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360B505825B5143700B46F14 /* Bubble.swift */; };
 		360B505E25B5702C00B46F14 /* highScore.json in Resources */ = {isa = PBXBuildFile; fileRef = 360B505D25B5702C00B46F14 /* highScore.json */; };
-		360B506125B5718E00B46F14 /* jsonFileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360B506025B5718E00B46F14 /* jsonFileHandler.swift */; };
 		3643EA4625B3DEE5004B3BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643EA4525B3DEE5004B3BB6 /* AppDelegate.swift */; };
 		3643EA4825B3DEE5004B3BB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643EA4725B3DEE5004B3BB6 /* SceneDelegate.swift */; };
 		3643EA4A25B3DEE5004B3BB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643EA4925B3DEE5004B3BB6 /* ViewController.swift */; };
@@ -25,7 +24,6 @@
 /* Begin PBXFileReference section */
 		360B505825B5143700B46F14 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		360B505D25B5702C00B46F14 /* highScore.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = highScore.json; sourceTree = "<group>"; };
-		360B506025B5718E00B46F14 /* jsonFileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonFileHandler.swift; sourceTree = "<group>"; };
 		3643EA4225B3DEE5004B3BB6 /* BubblePop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubblePop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3643EA4525B3DEE5004B3BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3643EA4725B3DEE5004B3BB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 		3643EA4425B3DEE5004B3BB6 /* BubblePop */ = {
 			isa = PBXGroup;
 			children = (
-				360B506025B5718E00B46F14 /* jsonFileHandler.swift */,
 				3643EA4525B3DEE5004B3BB6 /* AppDelegate.swift */,
 				3643EA4725B3DEE5004B3BB6 /* SceneDelegate.swift */,
 				360B505D25B5702C00B46F14 /* highScore.json */,
@@ -174,7 +171,6 @@
 				3643EA5E25B40383004B3BB6 /* StartViewController.swift in Sources */,
 				3643EA4625B3DEE5004B3BB6 /* AppDelegate.swift in Sources */,
 				3643EA6425B403A0004B3BB6 /* GameViewController.swift in Sources */,
-				360B506125B5718E00B46F14 /* jsonFileHandler.swift in Sources */,
 				3643EA4825B3DEE5004B3BB6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

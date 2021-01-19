@@ -12,6 +12,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var remainTimeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var bubbleContainerView: UIView!
     
     var name: String = "";
     var remainTime: Int = 60;
@@ -20,6 +21,11 @@ class GameViewController: UIViewController {
     var score: Int = 0;
     var timer = Timer();
     var bubbleArray: [UIButton] = [];
+    
+    let bubbleSize: Int = 75;
+    var containerWidth: Int = 10;
+    var containerHeight: Int = 10;
+    var lastColor: UIColor = .white;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +49,12 @@ class GameViewController: UIViewController {
             self.counter();
             self.generateBubble();
         }
+        
+    }
+    
+    override func viewDidLayoutSubviews(){
+        containerWidth = Int(self.bubbleContainerView.frame.size.width);
+        containerHeight = Int(self.bubbleContainerView.frame.size.height);
     }
     
     @objc func counter() {
@@ -61,55 +73,78 @@ class GameViewController: UIViewController {
             // Go to next screen
             self.performSegue(withIdentifier: "gameOverSegue", sender: nil);
         } else {
-            print("The timer is counting down!");
+            print("The timer is counting down! bubbleArray: \(bubbleArray.count)");
         }
     }
     
     @objc func generateBubble() {
         
         // Random number of bubbles up to the limit
-        let bubbleNumber = Int.random(in: 5...numberLimit);
+        let bubbleNumber = Int.random(in: 0...numberLimit);
         
         if bubbleArray.count < bubbleNumber {
             
-            print("Too little bubbles! \(bubbleArray.count) < \(bubbleNumber)")
-            
-            for i in 1...bubbleNumber - bubbleArray.count {
-                print(i);
-                let xAxis = Int.random(in: 60...600);
-                let yAxis = Int.random(in: 60...600);
-                let bubble = UIButton.bubbleButton(frame: CGRect(x: xAxis, y: yAxis, width: 50, height: 50), color: BubbleColor.pink);
+            for _ in 1...bubbleNumber - bubbleArray.count {
+                let xAxis = Int.random(in: 0...containerWidth-bubbleSize);
+                let yAxis = Int.random(in: 0...containerHeight-bubbleSize);
+                let bubble = UIButton.bubbleButton(frame: CGRect(x: xAxis, y: yAxis, width: bubbleSize, height: bubbleSize));
                 bubble.addTarget(self, action: #selector(bubblePressed(_:)), for: .touchUpInside);
-                
-                self.view.addSubview(bubble);
+                self.bubbleContainerView.addSubview(bubble);
                 bubbleArray.append(bubble);
             }
             
         } else if bubbleArray.count > bubbleNumber {
             
-            print("Too many bubbles! \(bubbleArray.count) > \(bubbleNumber)")
-            
-            for i in 1...bubbleArray.count - bubbleNumber {
-                print(i)
+            for _ in 1...bubbleArray.count - bubbleNumber {
                 let removeIndex = Int.random(in: 0...bubbleArray.count - 1);
                 bubbleArray[removeIndex].removeFromSuperview();
                 bubbleArray.remove(at: removeIndex);
             }
             
         } else {
-            print("There's enough bubbles! \(bubbleArray.count) = \(bubbleNumber)")
+            print("Just enough bubbles! \(bubbleArray.count) = \(bubbleNumber)")
         }
         
     }
     
     @IBAction func bubblePressed(_ sender: UIButton) {
+        if let index = bubbleArray.firstIndex(of: sender){
+            bubbleArray.remove(at: index);
+            print("bubbleArray: \(bubbleArray.count)");
+        }
+        
         sender.removeFromSuperview();
         
         // update the player's score
-        score += 1;
-        scoreLabel.text = String(score);
+        if let color = sender.backgroundColor{
+            var scoreBoost: Float;
+            
+            if color == lastColor {
+                scoreBoost = 1.5;
+            } else {
+                scoreBoost = 1.0;
+            }
+            
+            switch color {
+            case .black:
+                score += Int(10 * scoreBoost);
+            case .blue:
+                score += Int(8 * scoreBoost);
+            case .green:
+                score += Int(5 * scoreBoost);
+            case .systemPink:
+                score += Int(2 * scoreBoost);
+            default:
+                score += Int(1 * scoreBoost);
+            }
+            
+            lastColor = color;
+            
+            scoreLabel.text = String(score);
+        } else {
+            print("Bubble color unset")
+        }
         
-        print("This bubble is pressed");
     }
     
 }

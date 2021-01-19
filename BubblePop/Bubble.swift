@@ -17,25 +17,28 @@ enum BubbleColor: String {
 }
 
 extension UIButton {
-    class func bubbleButton(frame: CGRect, color: BubbleColor) -> UIButton {
+    class func bubbleButton(frame: CGRect) -> UIButton {
         let bubble = UIButton(frame: frame);
         bubble.clipsToBounds = true;
         bubble.layer.cornerRadius = bubble.frame.width/2.0;
         bubble.layer.borderColor = UIColor.white.cgColor;
-        switch color {
-        case BubbleColor.red:
-            bubble.backgroundColor = .red;
-        case BubbleColor.pink:
-            bubble.backgroundColor = .systemPink;
-        case BubbleColor.green:
-            bubble.backgroundColor = .green;
-        case BubbleColor.blue:
-            bubble.backgroundColor = .blue;
-        case BubbleColor.black:
-            bubble.backgroundColor = .black;
-        }
         bubble.layer.borderWidth = 2.0;
         bubble.setImage(UIImage(named: "b2.png"), for: .normal);
+        
+        let colorPicker = Int.random(in:1...100);
+        switch colorPicker {
+        case 1...5: // 5%
+            bubble.backgroundColor = .black;
+        case 5...15: // 10%
+            bubble.backgroundColor = .blue;
+        case 15...30: // 15%
+            bubble.backgroundColor = .green;
+        case 30...60: // 30%
+            bubble.backgroundColor = .systemPink;
+        default: // 40%
+            bubble.backgroundColor = .red;
+        }
+        
         return bubble;
     }
 }
