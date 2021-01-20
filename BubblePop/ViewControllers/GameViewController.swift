@@ -21,6 +21,7 @@ class GameViewController: UIViewController {
     var score: Int = 0;
     var timer = Timer();
     var bubbleArray: [UIButton] = [];
+    var bubblePosArray: [BubblePos] = [];
     
     let bubbleSize: Int = 75;
     var containerWidth: Int = 10;
@@ -83,33 +84,45 @@ class GameViewController: UIViewController {
         let bubbleNumber = Int.random(in: 0...numberLimit);
         
         if bubbleArray.count < bubbleNumber {
-            
+            // Needs more bubbles
             for _ in 1...bubbleNumber - bubbleArray.count {
-                let xAxis = Int.random(in: 0...containerWidth-bubbleSize);
-                let yAxis = Int.random(in: 0...containerHeight-bubbleSize);
-                let bubble = UIButton.bubbleButton(frame: CGRect(x: xAxis, y: yAxis, width: bubbleSize, height: bubbleSize));
+                
+                // A pos that is not overlap with exiting pos (TODO)
+                let bubblePos = generateBubblePos();
+                let bubble = UIButton.bubbleButton(frame: CGRect(x: bubblePos.xAxis, y: bubblePos.yAxis, width: bubbleSize, height: bubbleSize));
                 bubble.addTarget(self, action: #selector(bubblePressed(_:)), for: .touchUpInside);
+                
+                // Present in view
                 self.bubbleContainerView.addSubview(bubble);
+                
                 bubbleArray.append(bubble);
+                bubblePosArray.append(bubblePos);
             }
-            
+
         } else if bubbleArray.count > bubbleNumber {
-            
+            // Remove bubbles randomly
             for _ in 1...bubbleArray.count - bubbleNumber {
                 let removeIndex = Int.random(in: 0...bubbleArray.count - 1);
+                
+                // Remove from view
                 bubbleArray[removeIndex].removeFromSuperview();
+                
                 bubbleArray.remove(at: removeIndex);
+                bubblePosArray.remove(at: removeIndex);
             }
             
         } else {
             print("Just enough bubbles! \(bubbleArray.count) = \(bubbleNumber)")
         }
         
+        print("Bubble: \(bubbleArray.count) ?? BubblePos: \(bubblePosArray.count)");
+        
     }
     
     @IBAction func bubblePressed(_ sender: UIButton) {
         if let index = bubbleArray.firstIndex(of: sender){
             bubbleArray.remove(at: index);
+            bubblePosArray.remove(at: index);
             print("bubbleArray: \(bubbleArray.count)");
         }
         
@@ -147,4 +160,43 @@ class GameViewController: UIViewController {
         
     }
     
+    func checkForOverlap(x: Int, y: Int) -> Bool{
+//        var isOverlap: Bool = false;
+        
+        var i: Int = 0;
+        for bubblePos in bubblePosArray {
+            let deltaX = fabsf(Float(bubblePos.xAxis - x));
+            let deltaY = fabsf(Float(bubblePos.yAxis - y));
+            if deltaX < Float(bubbleSize) || deltaY < Float(bubbleSize) {
+//            if deltaX < 1 || deltaY < 1 {
+//                isOverlap = true;
+                i += 1;
+            } else {
+                // Do nothing
+            }
+        }
+//        return isOverlap;
+        return (i == 0) ? false : true;
+    }
+    
+    func generateBubblePos() -> BubblePos {
+        
+        var x = Int.random(in: 0...containerWidth-bubbleSize);
+        var y = Int.random(in: 0...containerHeight-bubbleSize);
+        var isOverlap: Bool = checkForOverlap(x: x, y: y);
+        
+        while isOverlap {
+            print("\(isOverlap)")
+            x = Int.random(in: 0...containerWidth-bubbleSize);
+            y = Int.random(in: 0...containerHeight-bubbleSize);
+            guard checkForOverlap(x: x, y: y) else {
+                isOverlap = false;
+                exit(0);
+            }
+        }
+        
+        let bubblePos = BubblePos(xAxis: x, yAxis: y);
+        
+        return bubblePos;
+    }
 }

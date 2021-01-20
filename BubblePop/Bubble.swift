@@ -16,6 +16,11 @@ enum BubbleColor: String {
     case black;
 }
 
+struct BubblePos{
+    var xAxis: Int;
+    var yAxis: Int;
+}
+
 extension UIButton {
     class func bubbleButton(frame: CGRect) -> UIButton {
         let bubble = UIButton(frame: frame);

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		360B505925B5143700B46F14 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360B505825B5143700B46F14 /* Bubble.swift */; };
-		360B505E25B5702C00B46F14 /* highScore.json in Resources */ = {isa = PBXBuildFile; fileRef = 360B505D25B5702C00B46F14 /* highScore.json */; };
 		3643EA4625B3DEE5004B3BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643EA4525B3DEE5004B3BB6 /* AppDelegate.swift */; };
 		3643EA4825B3DEE5004B3BB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643EA4725B3DEE5004B3BB6 /* SceneDelegate.swift */; };
 		3643EA4A25B3DEE5004B3BB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643EA4925B3DEE5004B3BB6 /* ViewController.swift */; };
@@ -19,11 +18,11 @@
 		3643EA6125B40393004B3BB6 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643EA6025B40393004B3BB6 /* SettingViewController.swift */; };
 		3643EA6425B403A0004B3BB6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643EA6325B403A0004B3BB6 /* GameViewController.swift */; };
 		3643EA6725B403AF004B3BB6 /* HighScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643EA6625B403AF004B3BB6 /* HighScoreViewController.swift */; };
+		D42C42C125B7982E005903E7 /* highScore.json in Resources */ = {isa = PBXBuildFile; fileRef = D42C42C025B7982E005903E7 /* highScore.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		360B505825B5143700B46F14 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
-		360B505D25B5702C00B46F14 /* highScore.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = highScore.json; sourceTree = "<group>"; };
 		3643EA4225B3DEE5004B3BB6 /* BubblePop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubblePop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3643EA4525B3DEE5004B3BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3643EA4725B3DEE5004B3BB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +35,7 @@
 		3643EA6025B40393004B3BB6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3643EA6325B403A0004B3BB6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3643EA6625B403AF004B3BB6 /* HighScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreViewController.swift; sourceTree = "<group>"; };
+		D42C42C025B7982E005903E7 /* highScore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = highScore.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,13 +70,13 @@
 			children = (
 				3643EA4525B3DEE5004B3BB6 /* AppDelegate.swift */,
 				3643EA4725B3DEE5004B3BB6 /* SceneDelegate.swift */,
-				360B505D25B5702C00B46F14 /* highScore.json */,
 				3643EA5B25B40364004B3BB6 /* ViewControllers */,
 				3643EA4B25B3DEE5004B3BB6 /* Main.storyboard */,
 				3643EA4E25B3DEE6004B3BB6 /* Assets.xcassets */,
 				3643EA5025B3DEE6004B3BB6 /* LaunchScreen.storyboard */,
 				3643EA5325B3DEE6004B3BB6 /* Info.plist */,
 				360B505825B5143700B46F14 /* Bubble.swift */,
+				D42C42C025B7982E005903E7 /* highScore.json */,
 			);
 			path = BubblePop;
 			sourceTree = "<group>";
@@ -152,7 +152,7 @@
 			files = (
 				3643EA5225B3DEE6004B3BB6 /* LaunchScreen.storyboard in Resources */,
 				3643EA4F25B3DEE6004B3BB6 /* Assets.xcassets in Resources */,
-				360B505E25B5702C00B46F14 /* highScore.json in Resources */,
+				D42C42C125B7982E005903E7 /* highScore.json in Resources */,
 				3643EA4D25B3DEE5004B3BB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +320,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BubblePop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -338,6 +339,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BubblePop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
