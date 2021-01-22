@@ -7,11 +7,14 @@
 
 import Foundation
 
-func readFromJSON() -> [HighScore] {
+func readFromJSON(_ fileName: String) -> [HighScore] {
     do {
-        let fileURL = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("highScore.json");
-        let data = try Data(contentsOf: fileURL);
-        let highScores = try JSONDecoder().decode([HighScore].self, from: data);
+        guard let filePath = Bundle.main.path(forResource: fileName, ofType: "json") else { return [] }
+        let localData = NSData.init(contentsOfFile: filePath)! as Data;
+
+        let decoder = JSONDecoder();
+        let highScores = try decoder.decode([HighScore].self, from: localData);
+
         return highScores;
     } catch {
         print(error.localizedDescription);
@@ -19,37 +22,12 @@ func readFromJSON() -> [HighScore] {
     }
 }
 
-func saveToJSON(_ highScoreArray: [HighScore]) {
+func saveToJSON(_ highScoreArray: [HighScore], _ fileName: String) {
     do {
-        let fileURL = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("highScore.json");
+        guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: "json") else { return }
         let encoder = JSONEncoder();
         try encoder.encode(highScoreArray).write(to: fileURL);
     } catch {
         print(error.localizedDescription);
     }
 }
-
-//func readFromJSON() -> [HighScore] {
-//    do {
-//        guard let filePath = Bundle.main.path(forResource: "highScore", ofType: "json") else { return [] }
-//        let localData = NSData.init(contentsOfFile: filePath)! as Data;
-//
-//        let decoder = JSONDecoder();
-//        let highScores = try decoder.decode([HighScore].self, from: localData);
-//
-//        return highScores;
-//    } catch {
-//        print(error.localizedDescription);
-//        return [];
-//    }
-//}
-//
-//func saveToJSON(_ highScoreArray: [HighScore]) {
-//    do {
-//        guard let fileURL = Bundle.main.url(forResource: "highScore", withExtension: "json") else { return }
-//        let encoder = JSONEncoder();
-//        try encoder.encode(highScoreArray).write(to: fileURL);
-//    } catch {
-//        print(error.localizedDescription);
-//    }
-//}

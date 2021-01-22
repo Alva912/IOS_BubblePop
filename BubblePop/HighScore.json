@@ -1,0 +1,14 @@
+[
+    {
+        "playerName": "SamplePlayer1",
+        "score": 10
+    },
+    {
+        "playerName": "SamplePlayer2",
+        "score": 20
+    },
+    {
+        "playerName": "SamplePlayer3",
+        "score": 30
+    }
+]

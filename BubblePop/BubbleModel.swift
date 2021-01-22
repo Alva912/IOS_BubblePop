@@ -8,6 +8,20 @@
 import Foundation
 import UIKit;
 
+enum BubbleColor: String {
+    case black = "BubbleBlack";
+    case blue = "BubbleBlue";
+    case green = "BubbleGreen";
+    case pink = "BubblePink";
+    case red = "BubbleRed";
+}
+
+extension UIColor {
+    static func bubbleColor(_ name: BubbleColor) -> UIColor? {
+        return UIColor(named: name.rawValue);
+    }
+}
+
 struct BubblePos{
     var xAxis: Int;
     var yAxis: Int;
@@ -18,22 +32,20 @@ extension UIButton {
         let bubble = UIButton(frame: frame);
         bubble.clipsToBounds = true;
         bubble.layer.cornerRadius = bubble.frame.width/2.0;
-        bubble.layer.borderColor = UIColor.white.cgColor;
-        bubble.layer.borderWidth = 2.0;
-        bubble.setImage(UIImage(named: "b2.png"), for: .normal);
+        bubble.setBackgroundImage(UIImage(named: "b2.png"), for: .normal);
         
         let colorPicker = Int.random(in:1...100);
         switch colorPicker {
         case 1...5: // 5%
-            bubble.backgroundColor = .black;
+            bubble.backgroundColor = .bubbleColor(.black);
         case 5...15: // 10%
-            bubble.backgroundColor = .blue;
+            bubble.backgroundColor = .bubbleColor(.blue);
         case 15...30: // 15%
-            bubble.backgroundColor = .green;
+            bubble.backgroundColor = .bubbleColor(.green);
         case 30...60: // 30%
-            bubble.backgroundColor = .systemPink;
+            bubble.backgroundColor = .bubbleColor(.pink);
         default: // 40%
-            bubble.backgroundColor = .red;
+            bubble.backgroundColor = .bubbleColor(.red);
         }
         
         return bubble;

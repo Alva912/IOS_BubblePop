@@ -10,7 +10,7 @@ import UIKit
 class GameResultViewController: UIViewController {
     
     @IBOutlet weak var playerNameLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var currentScoreLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var highScoreTabelView: UITableView!
 
@@ -18,8 +18,7 @@ class GameResultViewController: UIViewController {
     var currentScore: Int = 0;
 
     // Retrive history data from local json file
-    var highScoreArray: [HighScore] = readFromJSON();
-    var sortedHighScore: [HighScore] = [];
+    var highScoreArray: [HighScore] = readFromJSON("HighScore");
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,29 +47,33 @@ class GameResultViewController: UIViewController {
                     // New player
                 }
             }
+        } else {
+            print("Error: High score data is empty")
         }
         
         if !isExistingPlayer {
             highScoreArray.append(newHighScore);
         }
-        // Update data
-        saveToJSON(highScoreArray);
-      
-        // Display UI
-        navigationItem.setHidesBackButton(true, animated: false);
-        playerNameLabel.text = playerName;
-        scoreLabel.text = String(currentScore);
-        highScoreLabel.text = String(highestScore);
 
         // Sort the array of high score by score value
         // for table view to display sorted high score
-        sortedHighScore = highScoreArray.sorted{ $0.score > $1.score};
+        highScoreArray = highScoreArray.sorted{ $0.score > $1.score};
+
+        // Update data
+        saveToJSON(highScoreArray, "HighScore");
+
+        // Display UI
+        navigationItem.setHidesBackButton(true, animated: false);
+        playerNameLabel.text = playerName;
+        currentScoreLabel.text = String(currentScore);
+        highScoreLabel.text = String(highestScore);
+
     }
 }
 
 extension GameResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sortedHighScore.count;
+        highScoreArray.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,7 +82,7 @@ extension GameResultViewController: UITableViewDataSource {
         
         // Retrive index for corresponding data
         let index = indexPath.row;
-        let highScore = sortedHighScore[index];
+        let highScore = highScoreArray[index];
         
         // Assign the data(content) to UI
         cell.textLabel?.text = highScore.playerName;

@@ -14,8 +14,6 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-
         // Init default game settings
         if defaults.integer(forKey: RemainTimeKey) == 0 {
             defaults.set(30, forKey: RemainTimeKey);
@@ -33,8 +31,6 @@ class StartViewController: UIViewController {
 
     @IBAction func unwindToStartView(segue: UIStoryboardSegue) {
         defaults.set("", forKey: PlayerNameKey);
-        // Empty the User Defaults - including previous game settings
-        // defaults.dictionaryRepresentation().keys.forEach(defaults.removeObject(forKey:));
     }
 
 }

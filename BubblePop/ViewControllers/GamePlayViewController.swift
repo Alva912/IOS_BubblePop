@@ -39,7 +39,7 @@ class GamePlayViewController: UIViewController {
         numberLimit = defaults.integer(forKey: NumberLimitKey);
 
         var highestScore: Int;
-        let historyHighScore: [HighScore] = readFromJSON();
+        let historyHighScore: [HighScore] = readFromJSON("HighScore");
         if historyHighScore.count == 0 {
             highestScore = 0;
         } else {
@@ -66,8 +66,9 @@ class GamePlayViewController: UIViewController {
         
     }
     
-    // A method to update container size according to layout
-    override func viewDidLayoutSubviews(){
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+
         containerWidth = Int(self.bubbleContainerView.frame.size.width);
         containerHeight = Int(self.bubbleContainerView.frame.size.height);
         bubbleSize = Int(containerWidth/5);
@@ -89,12 +90,10 @@ class GamePlayViewController: UIViewController {
         if remainTime == 0 {
             // Stop the timer
             timer.invalidate();
-            print("Game is over");
-            
             // Go to next screen
             self.performSegue(withIdentifier: "gameOverSegue", sender: nil);
         } else {
-            print("The timer is counting down");
+            print("The timer is counting down: \(remainTime)");
         }
     }
     
@@ -127,9 +126,8 @@ class GamePlayViewController: UIViewController {
                 bubbleArray[removeIndex].removeFromSuperview();
                 bubbleArray.remove(at: removeIndex);
             }
-            
         } else {
-            print("Just enough bubbles! \(bubbleArray.count) = \(bubbleNumber)");
+            print("Just enough bubbles: \(bubbleArray.count) = \(bubbleNumber)");
         }
 
     }
@@ -138,13 +136,11 @@ class GamePlayViewController: UIViewController {
         if let index = bubbleArray.firstIndex(of: sender){
             bubbleArray.remove(at: index);
         }
-        
         sender.removeFromSuperview();
-        
+
         // update the player's score
         if let color = sender.backgroundColor{
             var scoreBoost: Float;
-            
             if color == lastColor {
                 scoreBoost = 1.5;
             } else {
@@ -152,23 +148,22 @@ class GamePlayViewController: UIViewController {
             }
             
             switch color {
-            case .black:
+            case UIColor.bubbleColor(.black):
                 currentScore += Int(10 * scoreBoost);
-            case .blue:
+            case UIColor.bubbleColor(.blue):
                 currentScore += Int(8 * scoreBoost);
-            case .green:
+            case UIColor.bubbleColor(.green):
                 currentScore += Int(5 * scoreBoost);
-            case .systemPink:
+            case UIColor.bubbleColor(.pink):
                 currentScore += Int(2 * scoreBoost);
-            default:
+            default: // red
                 currentScore += Int(1 * scoreBoost);
             }
-            
+
             lastColor = color;
-            
             currentScoreLabel.text = "\(currentScore)";
         } else {
-            print("Bubble color unset");
+            print("Error: Bubble color unset");
         }
         
     }
@@ -202,20 +197,18 @@ class GamePlayViewController: UIViewController {
         if let identifier = segue.identifier {
             switch identifier {
             case "gameOverSegue":
-                print("Prepare segue for", identifier);
-                
                 if let vc = segue.destination as? GameResultViewController {
                     vc.playerName = playerName;
                     vc.currentScore = currentScore;
                 } else {
-                    print("Type cast failed for segue", identifier);
+                    print("Error: Type cast failed for segue", identifier);
                 }
                 break;
             default:
-                print("Prepare segue for unhandled identifier", identifier);
+                print("Error: Prepare segue for unhandled identifier", identifier);
             }
         } else {
-            print("Segue with empty identifier is performed. Better check it.");
+            print("Error: Segue with empty identifier is performed. Better check it.");
         }
     }
 }
