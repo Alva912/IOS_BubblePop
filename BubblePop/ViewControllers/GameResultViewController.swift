@@ -17,17 +17,14 @@ class GameResultViewController: UIViewController {
     var playerName: String = "";
     var currentScore: Int = 0;
 
-    var highScoreArray: [HighScore] = [];
+    // Retrive history data from local json file
+    var highScoreArray: [HighScore] = readFromJSON();
+    var sortedHighScore: [HighScore] = [];
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        navigationItem.setHidesBackButton(true, animated: false);
-
-        // Retrive history data from local json file
-        highScoreArray = readFromJSON();
-
+        // Compare current to history data and update array
         let newHighScore = HighScore(playerName: playerName, score: currentScore);
         var highestScore: Int = currentScore;
         var isExistingPlayer: Bool = false;
@@ -54,19 +51,24 @@ class GameResultViewController: UIViewController {
         if !isExistingPlayer {
             highScoreArray.append(newHighScore);
         }
-        
+        // Update data
         saveToJSON(highScoreArray);
-        
-        // Displaay in UI
+      
+        // Display UI
+        navigationItem.setHidesBackButton(true, animated: false);
         playerNameLabel.text = playerName;
         scoreLabel.text = String(currentScore);
         highScoreLabel.text = String(highestScore);
+
+        // Sort the array of high score by score value
+        // for table view to display sorted high score
+        sortedHighScore = highScoreArray.sorted{ $0.score > $1.score};
     }
 }
 
 extension GameResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        highScoreArray.count;
+        sortedHighScore.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,7 +77,7 @@ extension GameResultViewController: UITableViewDataSource {
         
         // Retrive index for corresponding data
         let index = indexPath.row;
-        let highScore = highScoreArray[index];
+        let highScore = sortedHighScore[index];
         
         // Assign the data(content) to UI
         cell.textLabel?.text = highScore.playerName;

@@ -76,26 +76,6 @@ class GamePlayViewController: UIViewController {
             timer.invalidate();
             print("Game is over!");
             
-            // Pass data            
-//            if let dict = defaults.dictionary(forKey: HighScoreDictKey) as? [String: Int] {
-//                var highScoreDict = dict;
-//
-//                if let highScore = highScoreDict[playerName] {
-//                    if score > highScore {
-//                        // Update highScore
-//                        highScoreDict[playerName] = score;
-//                    } else {
-//                        // Don't update highScore
-//                    }
-//                } else {
-//                    highScoreDict[playerName] = score;
-//                }
-//
-//                defaults.set(highScoreDict, forKey: HighScoreDictKey);
-//            } else {
-//                print("Type cast failed for high score dictionary");
-//            }
-            
             // Go to next screen
             self.performSegue(withIdentifier: "gameOverSegue", sender: nil);
         } else {

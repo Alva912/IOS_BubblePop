@@ -12,4 +12,3 @@ let PlayerNameKey = "PlayerName";
 let RemainTimeKey = "RemainTime";
 let NumberLimitKey = "NumberLimit";
 let HighScoreDictKey = "HighScoreDict";
-

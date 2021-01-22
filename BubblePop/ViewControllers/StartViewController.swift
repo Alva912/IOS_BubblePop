@@ -33,6 +33,8 @@ class StartViewController: UIViewController {
 
     @IBAction func unwindToStartView(segue: UIStoryboardSegue) {
         defaults.set("", forKey: PlayerNameKey);
+        // Empty the User Defaults - including previous game settings
+        // defaults.dictionaryRepresentation().keys.forEach(defaults.removeObject(forKey:));
     }
 
 }

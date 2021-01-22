@@ -417,7 +417,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="High Score" id="VeX-rT-HWB">
                         <barButtonItem key="backBarButtonItem" title="Back" id="GHG-4L-QYZ"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="GCJ-hZ-OBK"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="edit" id="gQp-Qb-ScK"/>
+                            <barButtonItem title="Delete" id="47N-0U-Ea5">
+                                <connections>
+                                    <action selector="deleteButtonOnClick:" destination="iNf-PJ-BQY" id="AtM-Tr-z8U"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="highScoreTableView" destination="P6c-gc-CGz" id="7JJ-Gd-IPS"/>

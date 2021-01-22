@@ -1,14 +1,14 @@
 [
     {
-        "playerName": "Alva",
-        "score": 8
+        "playerName": "SamplePlayer1",
+        "score": 10
     },
     {
-        "playerName": "Bella",
-        "score": 7
+        "playerName": "SamplePlayer2",
+        "score": 20
     },
     {
-        "playerName": "Cindy",
-        "score": 6
+        "playerName": "SamplePlayer3",
+        "score": 30
     }
 ]
