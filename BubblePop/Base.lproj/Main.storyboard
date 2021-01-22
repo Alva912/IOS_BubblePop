@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lb5-pS-Tq0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -288,7 +289,7 @@
         <!--Game Play-->
         <scene sceneID="siD-Mg-C3w">
             <objects>
-                <viewController storyboardIdentifier="GameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F97-xI-wkS" customClass="GameViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GamePlayViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F97-xI-wkS" customClass="GamePlayViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JtJ-N1-MEf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -352,15 +353,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bubbleContainerView" destination="q8X-Wz-QLo" id="NHh-Rx-fOb"/>
-                        <outlet property="nameLabel" destination="rvA-kr-ZmU" id="oZ1-0m-h4a"/>
+                        <outlet property="playerNameLabel" destination="rvA-kr-ZmU" id="oZ1-0m-h4a"/>
                         <outlet property="remainTimeLabel" destination="p8R-kZ-Nsy" id="reI-Ym-Tm3"/>
                         <outlet property="scoreLabel" destination="Vut-VK-8qj" id="GBO-uI-KIR"/>
-                        <segue destination="iNf-PJ-BQY" kind="show" identifier="gameOverSegue" id="9LD-fl-CnD"/>
+                        <segue destination="MuO-fZ-KL5" kind="show" identifier="gameOverSegue" id="o40-pH-Baw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bd8-bN-xkF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1763.7681159420292" y="-141.29464285714286"/>
+            <point key="canvasLocation" x="1764" y="-147"/>
         </scene>
         <!--High Score-->
         <scene sceneID="v4K-F0-vI3">
@@ -426,10 +427,31 @@
             </objects>
             <point key="canvasLocation" x="934.78260869565224" y="681.69642857142856"/>
         </scene>
+        <!--Game Result-->
+        <scene sceneID="Ewb-M7-8KE">
+            <objects>
+                <viewController storyboardIdentifier="GameResultViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MuO-fZ-KL5" customClass="GameResultViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7lF-zq-F7B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="BMs-Jv-vGv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Game Result" id="Gy5-aD-UMy">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="7kM-Xe-Q6Y"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="6gq-rk-iGg">
+                            <connections>
+                                <segue destination="c0X-HZ-g5Y" kind="unwind" identifier="unwindToStartViewSegue" unwindAction="unwindToStartViewWithSegue:" id="OUI-z3-JhN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qp1-mM-cG2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="c0X-HZ-g5Y" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1764" y="682"/>
+        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="9LD-fl-CnD"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="b1" width="341" height="341"/>
         <systemColor name="systemBackgroundColor">

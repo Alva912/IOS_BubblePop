@@ -1,5 +1,5 @@
 //
-//  GameViewController.swift
+//  GamePlayViewController.swift
 //  BubblePop
 //
 //  Created by ljh on 12/1/21.
@@ -22,7 +22,6 @@ class GamePlayViewController: UIViewController {
     var timer = Timer();
     var bubbleArray: [UIButton] = [];
     
-    let bubbleSize: Int = 75;
     var containerWidth: Int = 10;
     var containerHeight: Int = 10;
     var lastColor: UIColor = .white;
@@ -69,7 +68,11 @@ class GamePlayViewController: UIViewController {
             
             // Pass data (TODO)
             let defaults = UserDefaults.standard;
-            var highScoreDict = defaults.dictionary(forKey: HighScoreDictKey) as! [String:Int];
+            var highScoreDict = [String: Int]();
+            
+            if let dict: [String: Int] = defaults.dictionary(forKey: HighScoreDictKey) as? [String: Int] {
+                highScoreDict = dict;
+            }
 
             if let highScore = highScoreDict[playerName] {
                 if score > highScore {
@@ -171,7 +174,7 @@ class GamePlayViewController: UIViewController {
     func generateBubblePos() -> BubblePos {
         var x: Int = 0;
         var y: Int  = 0;
-        var isOverlap: Bool  = true; // while loop will be performed at least onice
+        var isOverlap: Bool  = true; // while loop will be performed at least once
         
         while isOverlap {
             x = Int.random(in: 0...containerWidth-bubbleSize);
@@ -188,5 +191,31 @@ class GamePlayViewController: UIViewController {
         
         let bubblePos = BubblePos(xAxis: x, yAxis: y);
         return bubblePos;
+    }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "gameOverSegue":
+                print("Prepare segue for", identifier);
+                
+                if let vc = segue.destination as? GameResultViewController {
+                    vc.playerName = playerName;
+                    vc.score = score;
+                } else {
+                    print("Type cast failed for segue", identifier);
+                }
+                break;
+            default:
+                print("Prepare segue for unhandled identifier", identifier);
+            }
+        } else {
+            print("Segue with empty identifier is performed. Better check it.");
+        }
     }
 }

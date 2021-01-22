@@ -9,21 +9,29 @@ import UIKit
 
 class StartViewController: UIViewController {
 
+    let defaults = UserDefaults.standard;
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
 
-    /*
+        // Init default game settings
+        if defaults.integer(forKey: RemainTimeKey) == 0 {
+            defaults.set(30, forKey: RemainTimeKey);
+        }
+        if defaults.integer(forKey: NumberLimitKey) == 0 {
+            defaults.set(15, forKey: NumberLimitKey);
+        }
+        if defaults.dictionary(forKey: HighScoreDictKey) == nil {
+            let highScoreDict: [String: Int] = [:];
+            defaults.set(highScoreDict, forKey: HighScoreDictKey);
+        }    }
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func unwindToStartView(segue: UIStoryboardSegue) {
+//        defaults.set("", forKey: PlayerNameKey);
     }
-    */
 
 }

@@ -16,35 +16,52 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
 
+    let defaults = UserDefaults.standard;
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeLabel.text = "\(Int(timeSlider.value))";
-        numberLabel.text = "\(Int(numberSlider.value))";
+        
+        // Retrive previous settings
+        let playerName = defaults.string(forKey: PlayerNameKey);
+        let remainTime = defaults.integer(forKey: RemainTimeKey);
+        let numberLimit = defaults.integer(forKey: NumberLimitKey);
+        
+        // Set up slider current value
+        timeSlider.value = Float(remainTime);
+        numberSlider.value = Float(numberLimit);
+
+        // Display in UI
+        nameTextField.text = playerName;
+        timeLabel.text = "\(remainTime)";
+        numberLabel.text = "\(numberLimit)";
     }
     
     @IBAction func startButtonOnClick(_ sender: Any) {
-        if let name = nameTextField.text {
-            if name.count > 0 {
+        
+        let alert = UIAlertController(title: "Error:", message: "Please enter your name", preferredStyle: .alert);
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.nameTextField.becomeFirstResponder()}));
+        
+        if let playerName = nameTextField.text {
+            if playerName.count > 0 {
                 // Store data to userDefaults
-                let defaults = UserDefaults.standard;
-                defaults.set(name, forKey: "PlayerName");
+                defaults.set(playerName, forKey: PlayerNameKey);
                 
                 let remainTime = timeSlider.value;
-                defaults.set(remainTime, forKey: "RemainTime");
+                defaults.set(remainTime, forKey: RemainTimeKey);
                 
                 let numberLimit = numberSlider.value;
-                defaults.set(numberLimit, forKey: "NumberLimit");
+                defaults.set(numberLimit, forKey: NumberLimitKey);
                 
                 // Trigger segue
-                print("Trigger segue for", name);
+                print("Trigger segue for", playerName);
                 self.performSegue(withIdentifier: "startGameSegue", sender: nil);
             } else {
-                // Show alert (TODO)
-                print("Please enter a non-empty name");
+                // Show alert
+                self.present(alert, animated: true);
             }
         } else {
-            // Show alert (TODO)
-            print("Please enter a name");
+            // Show alert
+            self.present(alert, animated: true);
         }
     }
     

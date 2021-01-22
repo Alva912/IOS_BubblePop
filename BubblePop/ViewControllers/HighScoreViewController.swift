@@ -38,7 +38,7 @@ class HighScoreViewController: UIViewController {
         
         // Retrive current data from defaults
         let defaults = UserDefaults.standard;
-        if let currentName = defaults.string(forKey: "PlayerName"){
+        if let currentName = defaults.string(forKey: PlayerNameKey){
             let currentHighScore = HighScore(playerName: currentName, score: defaults.integer(forKey: "Score"));
             highScoreArray.append(currentHighScore);
             saveToJSON(highScoreArray);

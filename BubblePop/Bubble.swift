@@ -8,13 +8,7 @@
 import Foundation
 import UIKit;
 
-enum BubbleColor: String {
-    case red;
-    case pink;
-    case green;
-    case blue;
-    case black;
-}
+let bubbleSize: Int = 75;
 
 struct BubblePos{
     var xAxis: Int;
