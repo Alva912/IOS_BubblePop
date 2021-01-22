@@ -37,7 +37,7 @@
 		3643EA6025B40393004B3BB6 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3643EA6325B403A0004B3BB6 /* GamePlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewController.swift; sourceTree = "<group>"; };
 		3643EA6625B403AF004B3BB6 /* HighScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreViewController.swift; sourceTree = "<group>"; };
-		36B543D925BA8FA6009E93B7 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = SOURCE_ROOT; };
+		36B543D925BA8FA6009E93B7 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsKey.swift; path = ../UserDefaultsKey.swift; sourceTree = "<group>"; };
 		36B543DD25BA9982009E93B7 /* GameResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultViewController.swift; sourceTree = "<group>"; };
 		36B543E125BABE30009E93B7 /* JsonFileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFileHelper.swift; sourceTree = "<group>"; };
 		36B543E525BAD547009E93B7 /* HighScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreModel.swift; sourceTree = "<group>"; };

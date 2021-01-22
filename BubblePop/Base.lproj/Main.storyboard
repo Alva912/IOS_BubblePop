@@ -209,7 +209,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e9a-d1-sIh">
                                                 <rect key="frame" x="0.0" y="35" width="250" height="30"/>
                                                 <subviews>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="15" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="zZZ-4t-tW1" userLabel="Number Slider">
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="zZZ-4t-tW1" userLabel="Number Slider">
                                                         <rect key="frame" x="-2" y="0.0" width="204" height="31"/>
                                                         <color key="tintColor" systemColor="systemPurpleColor"/>
                                                         <accessibility key="accessibilityConfiguration" label="Bubble Numbers">

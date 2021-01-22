@@ -39,9 +39,9 @@ class GamePlayViewController: UIViewController {
         numberLimit = defaults.integer(forKey: NumberLimitKey);
         
         // Display data onto UI
-        playerNameLabel.text = playerName;
-        remainTimeLabel.text = String(remainTime);
-        scoreLabel.text = String(score);
+        playerNameLabel.text = "Player: \(playerName)";
+        remainTimeLabel.text = "Timer: \(remainTime)";
+        scoreLabel.text = "Score: \(score)";
         
         // A timer to count down and trigger functions every 1 sec
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
@@ -69,7 +69,7 @@ class GamePlayViewController: UIViewController {
     
     @objc func counter() {
         remainTime -= 1;
-        remainTimeLabel.text = String(remainTime);
+        remainTimeLabel.text = "Timer: \(remainTime)";
         
         if remainTime == 0 {
             // Stop the timer
@@ -152,7 +152,7 @@ class GamePlayViewController: UIViewController {
             
             lastColor = color;
             
-            scoreLabel.text = String(score);
+            scoreLabel.text = "Score: \(score)";
         } else {
             print("Bubble color unset");
         }
