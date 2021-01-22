@@ -11,37 +11,51 @@ class GamePlayViewController: UIViewController {
     
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var remainTimeLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var currentScoreLabel: UILabel!
+    @IBOutlet weak var highestScoreLabel: UILabel!
     @IBOutlet weak var bubbleContainerView: UIView!
+
+    var containerWidth: Int = 10;
+    var containerHeight: Int = 10;
+    var bubbleSize: Int = 10;
     
     var playerName: String = "";
     var remainTime: Int = 60;
     var numberLimit: Int = 0;
-    
-    var score: Int = 0;
-    var timer = Timer();
+    var currentScore: Int = 0;
     var bubbleArray: [UIButton] = [];
-    
-    var containerWidth: Int = 10;
-    var containerHeight: Int = 10;
     var lastColor: UIColor = .white;
-    
+    var timer = Timer();
     let defaults = UserDefaults.standard;
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Retrive data from UserDefaults
+        // Retrive data
         if let playerName = defaults.string(forKey: PlayerNameKey) {
             self.playerName = playerName;
         }
         remainTime = defaults.integer(forKey: RemainTimeKey);
         numberLimit = defaults.integer(forKey: NumberLimitKey);
+
+        var highestScore: Int;
+        let historyHighScore: [HighScore] = readFromJSON();
+        if historyHighScore.count == 0 {
+            highestScore = 0;
+        } else {
+            let sortedHighScore = historyHighScore.sorted{ $0.score > $1.score};
+            highestScore = sortedHighScore[0].score;
+        }
         
         // Display data onto UI
-        playerNameLabel.text = "Player: \(playerName)";
-        remainTimeLabel.text = "Timer: \(remainTime)";
-        scoreLabel.text = "Score: \(score)";
+        playerNameLabel.text = "\(playerName)";
+        playerNameLabel.adjustsFontSizeToFitWidth = true;
+        remainTimeLabel.text = "\(remainTime)";
+        remainTimeLabel.adjustsFontSizeToFitWidth = true;
+        currentScoreLabel.text = "\(currentScore)";
+        currentScoreLabel.adjustsFontSizeToFitWidth = true;
+        highestScoreLabel.text = "\(highestScore)";
+        highestScoreLabel.adjustsFontSizeToFitWidth = true;
         
         // A timer to count down and trigger functions every 1 sec
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
@@ -56,6 +70,7 @@ class GamePlayViewController: UIViewController {
     override func viewDidLayoutSubviews(){
         containerWidth = Int(self.bubbleContainerView.frame.size.width);
         containerHeight = Int(self.bubbleContainerView.frame.size.height);
+        bubbleSize = Int(containerWidth/5);
     }
     
     // Stop timer when go to other screen
@@ -69,17 +84,17 @@ class GamePlayViewController: UIViewController {
     
     @objc func counter() {
         remainTime -= 1;
-        remainTimeLabel.text = "Timer: \(remainTime)";
+        remainTimeLabel.text = String(remainTime);
         
         if remainTime == 0 {
             // Stop the timer
             timer.invalidate();
-            print("Game is over!");
+            print("Game is over");
             
             // Go to next screen
             self.performSegue(withIdentifier: "gameOverSegue", sender: nil);
         } else {
-            print("The timer is counting down! bubbleArray: \(bubbleArray.count)");
+            print("The timer is counting down");
         }
     }
     
@@ -122,7 +137,6 @@ class GamePlayViewController: UIViewController {
     @IBAction func bubblePressed(_ sender: UIButton) {
         if let index = bubbleArray.firstIndex(of: sender){
             bubbleArray.remove(at: index);
-            print("bubbleArray: \(bubbleArray.count)");
         }
         
         sender.removeFromSuperview();
@@ -139,20 +153,20 @@ class GamePlayViewController: UIViewController {
             
             switch color {
             case .black:
-                score += Int(10 * scoreBoost);
+                currentScore += Int(10 * scoreBoost);
             case .blue:
-                score += Int(8 * scoreBoost);
+                currentScore += Int(8 * scoreBoost);
             case .green:
-                score += Int(5 * scoreBoost);
+                currentScore += Int(5 * scoreBoost);
             case .systemPink:
-                score += Int(2 * scoreBoost);
+                currentScore += Int(2 * scoreBoost);
             default:
-                score += Int(1 * scoreBoost);
+                currentScore += Int(1 * scoreBoost);
             }
             
             lastColor = color;
             
-            scoreLabel.text = "Score: \(score)";
+            currentScoreLabel.text = "\(currentScore)";
         } else {
             print("Bubble color unset");
         }
@@ -192,7 +206,7 @@ class GamePlayViewController: UIViewController {
                 
                 if let vc = segue.destination as? GameResultViewController {
                     vc.playerName = playerName;
-                    vc.currentScore = score;
+                    vc.currentScore = currentScore;
                 } else {
                     print("Type cast failed for segue", identifier);
                 }

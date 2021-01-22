@@ -8,8 +8,6 @@
 import Foundation
 import UIKit;
 
-let bubbleSize: Int = 75;
-
 struct BubblePos{
     var xAxis: Int;
     var yAxis: Int;

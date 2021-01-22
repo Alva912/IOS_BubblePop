@@ -64,12 +64,12 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func timeSliderValueChanged(_ sender: UISlider) {
-        var currentValue = Int(sender.value);
+        let currentValue = Int(sender.value);
         timeLabel.text = "\(currentValue)";
     }
     
     @IBAction func numberSliderValueChanged(_ sender: UISlider) {
-        var currentValue = Int(sender.value);
+        let currentValue = Int(sender.value);
         numberLabel.text = "\(currentValue)";
     }
 }

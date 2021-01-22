@@ -29,22 +29,24 @@ class GameResultViewController: UIViewController {
         var highestScore: Int = currentScore;
         var isExistingPlayer: Bool = false;
 
-        for (index, highScore) in highScoreArray.enumerated() {
-            if highScore.playerName == playerName {
-                // Existing player
-                isExistingPlayer = true;
-
-                if currentScore < highScore.score {
-                    // Current score is less than history high score
-                    // Don't update high score
-                    highestScore = highScore.score;
+        if highScoreArray.count != 0 {
+            for (index, highScore) in highScoreArray.enumerated() {
+                if highScore.playerName == playerName {
+                    // Existing player
+                    isExistingPlayer = true;
+                    
+                    if currentScore < highScore.score {
+                        // Current score is less than history high score
+                        // Don't update high score
+                        highestScore = highScore.score;
+                    } else {
+                        // Updare new high score
+                        highScoreArray.remove(at: index);
+                        highScoreArray.append(newHighScore);
+                    }
                 } else {
-                    // Updare new high score
-                    highScoreArray.remove(at: index);
-                    highScoreArray.append(newHighScore);
+                    // New player
                 }
-            } else {
-                // New player
             }
         }
         
