@@ -21,7 +21,6 @@ class GameViewController: UIViewController {
     var score: Int = 0;
     var timer = Timer();
     var bubbleArray: [UIButton] = [];
-    var bubblePosArray: [BubblePos] = [];
     
     let bubbleSize: Int = 75;
     var containerWidth: Int = 10;
@@ -44,7 +43,7 @@ class GameViewController: UIViewController {
         remainTimeLabel.text = String(remainTime);
         scoreLabel.text = String(score);
         
-        // A timer dount down every 1 sec and call functions
+        // A timer to count down and trigger functions every 1 sec
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             timer in
             self.counter();
@@ -87,16 +86,15 @@ class GameViewController: UIViewController {
             // Needs more bubbles
             for _ in 1...bubbleNumber - bubbleArray.count {
                 
-                // A pos that is not overlap with exiting pos (TODO)
-                let bubblePos = generateBubblePos();
+                // A pos that is not overlap with exiting pos
+                let bubblePos: BubblePos = generateBubblePos();
+                
                 let bubble = UIButton.bubbleButton(frame: CGRect(x: bubblePos.xAxis, y: bubblePos.yAxis, width: bubbleSize, height: bubbleSize));
                 bubble.addTarget(self, action: #selector(bubblePressed(_:)), for: .touchUpInside);
                 
                 // Present in view
                 self.bubbleContainerView.addSubview(bubble);
-                
                 bubbleArray.append(bubble);
-                bubblePosArray.append(bubblePos);
             }
 
         } else if bubbleArray.count > bubbleNumber {
@@ -106,23 +104,18 @@ class GameViewController: UIViewController {
                 
                 // Remove from view
                 bubbleArray[removeIndex].removeFromSuperview();
-                
                 bubbleArray.remove(at: removeIndex);
-                bubblePosArray.remove(at: removeIndex);
             }
             
         } else {
             print("Just enough bubbles! \(bubbleArray.count) = \(bubbleNumber)")
         }
-        
-        print("Bubble: \(bubbleArray.count) ?? BubblePos: \(bubblePosArray.count)");
-        
+
     }
     
     @IBAction func bubblePressed(_ sender: UIButton) {
         if let index = bubbleArray.firstIndex(of: sender){
             bubbleArray.remove(at: index);
-            bubblePosArray.remove(at: index);
             print("bubbleArray: \(bubbleArray.count)");
         }
         
@@ -160,38 +153,22 @@ class GameViewController: UIViewController {
         
     }
     
-    func checkForOverlap(x: Int, y: Int) -> Bool{
-//        var isOverlap: Bool = false;
-        
-        var i: Int = 0;
-        for bubblePos in bubblePosArray {
-            let deltaX = fabsf(Float(bubblePos.xAxis - x));
-            let deltaY = fabsf(Float(bubblePos.yAxis - y));
-            if deltaX < Float(bubbleSize) || deltaY < Float(bubbleSize) {
-//            if deltaX < 1 || deltaY < 1 {
-//                isOverlap = true;
-                i += 1;
-            } else {
-                // Do nothing
-            }
-        }
-//        return isOverlap;
-        return (i == 0) ? false : true;
-    }
-    
     func generateBubblePos() -> BubblePos {
         
-        var x = Int.random(in: 0...containerWidth-bubbleSize);
-        var y = Int.random(in: 0...containerHeight-bubbleSize);
-        var isOverlap: Bool = checkForOverlap(x: x, y: y);
+        var x: Int = 0;
+        var y: Int  = 0;
+        var isOverlap: Bool  = true;
         
         while isOverlap {
-            print("\(isOverlap)")
             x = Int.random(in: 0...containerWidth-bubbleSize);
             y = Int.random(in: 0...containerHeight-bubbleSize);
-            guard checkForOverlap(x: x, y: y) else {
-                isOverlap = false;
-                exit(0);
+            let frame = CGRect(x: x, y: y, width: bubbleSize, height: bubbleSize);
+            isOverlap = false;
+            
+            for bubble in bubbleArray {
+                if bubble.frame.intersects(frame) {
+                    isOverlap = true;
+                }
             }
         }
         
