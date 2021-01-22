@@ -22,7 +22,7 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         
         // Retrive previous settings
-        let playerName = defaults.string(forKey: PlayerNameKey);
+//        let playerName = defaults.string(forKey: PlayerNameKey);
         let remainTime = defaults.integer(forKey: RemainTimeKey);
         let numberLimit = defaults.integer(forKey: NumberLimitKey);
         
@@ -31,7 +31,7 @@ class SettingViewController: UIViewController {
         numberSlider.value = Float(numberLimit);
 
         // Display in UI
-        nameTextField.text = playerName;
+//        nameTextField.text = playerName;
         timeLabel.text = "\(remainTime)";
         numberLabel.text = "\(numberLimit)";
     }
@@ -56,11 +56,9 @@ class SettingViewController: UIViewController {
                 print("Trigger segue for", playerName);
                 self.performSegue(withIdentifier: "startGameSegue", sender: nil);
             } else {
-                // Show alert
                 self.present(alert, animated: true);
             }
         } else {
-            // Show alert
             self.present(alert, animated: true);
         }
     }

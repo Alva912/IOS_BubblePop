@@ -26,12 +26,13 @@ class StartViewController: UIViewController {
         if defaults.dictionary(forKey: HighScoreDictKey) == nil {
             let highScoreDict: [String: Int] = [:];
             defaults.set(highScoreDict, forKey: HighScoreDictKey);
-        }    }
+        }
+    }
     
     // MARK: - Navigation
 
     @IBAction func unwindToStartView(segue: UIStoryboardSegue) {
-//        defaults.set("", forKey: PlayerNameKey);
+        defaults.set("", forKey: PlayerNameKey);
     }
 
 }

@@ -26,11 +26,12 @@ class GamePlayViewController: UIViewController {
     var containerHeight: Int = 10;
     var lastColor: UIColor = .white;
     
+    let defaults = UserDefaults.standard;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Retrive data from UserDefaults
-        let defaults = UserDefaults.standard;
         if let playerName = defaults.string(forKey: PlayerNameKey) {
             self.playerName = playerName;
         }
@@ -57,6 +58,15 @@ class GamePlayViewController: UIViewController {
         containerHeight = Int(self.bubbleContainerView.frame.size.height);
     }
     
+    // Stop timer when go to other screen
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        
+        if self.isMovingFromParent {
+            timer.invalidate();
+        }
+    }
+    
     @objc func counter() {
         remainTime -= 1;
         remainTimeLabel.text = String(remainTime);
@@ -66,26 +76,25 @@ class GamePlayViewController: UIViewController {
             timer.invalidate();
             print("Game is over!");
             
-            // Pass data (TODO)
-            let defaults = UserDefaults.standard;
-            var highScoreDict = [String: Int]();
-            
-            if let dict: [String: Int] = defaults.dictionary(forKey: HighScoreDictKey) as? [String: Int] {
-                highScoreDict = dict;
-            }
-
-            if let highScore = highScoreDict[playerName] {
-                if score > highScore {
-                    // Update highScore
-                    highScoreDict[playerName] = score;
-                } else {
-                    // Don't update highScore
-                }
-            } else {
-                highScoreDict[playerName] = score;
-            }
-
-            defaults.set(highScoreDict, forKey: HighScoreDictKey);
+            // Pass data            
+//            if let dict = defaults.dictionary(forKey: HighScoreDictKey) as? [String: Int] {
+//                var highScoreDict = dict;
+//
+//                if let highScore = highScoreDict[playerName] {
+//                    if score > highScore {
+//                        // Update highScore
+//                        highScoreDict[playerName] = score;
+//                    } else {
+//                        // Don't update highScore
+//                    }
+//                } else {
+//                    highScoreDict[playerName] = score;
+//                }
+//
+//                defaults.set(highScoreDict, forKey: HighScoreDictKey);
+//            } else {
+//                print("Type cast failed for high score dictionary");
+//            }
             
             // Go to next screen
             self.performSegue(withIdentifier: "gameOverSegue", sender: nil);
@@ -125,7 +134,7 @@ class GamePlayViewController: UIViewController {
             }
             
         } else {
-            print("Just enough bubbles! \(bubbleArray.count) = \(bubbleNumber)")
+            print("Just enough bubbles! \(bubbleArray.count) = \(bubbleNumber)");
         }
 
     }
@@ -165,12 +174,12 @@ class GamePlayViewController: UIViewController {
             
             scoreLabel.text = String(score);
         } else {
-            print("Bubble color unset")
+            print("Bubble color unset");
         }
         
     }
     
-    // Method to generate a unoverlapping tuple, ie BubblePos(x,y)
+    // Method to generate a unoverlapping bubble position (x,y)
     func generateBubblePos() -> BubblePos {
         var x: Int = 0;
         var y: Int  = 0;
@@ -195,10 +204,7 @@ class GamePlayViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
         if let identifier = segue.identifier {
             switch identifier {
             case "gameOverSegue":
@@ -206,7 +212,7 @@ class GamePlayViewController: UIViewController {
                 
                 if let vc = segue.destination as? GameResultViewController {
                     vc.playerName = playerName;
-                    vc.score = score;
+                    vc.currentScore = score;
                 } else {
                     print("Type cast failed for segue", identifier);
                 }

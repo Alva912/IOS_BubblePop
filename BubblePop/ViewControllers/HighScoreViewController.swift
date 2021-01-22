@@ -18,20 +18,7 @@ class HighScoreViewController: UIViewController {
     
     // Retrive history data from json file directly
     // or use readFromJSON();
-    var highScoreArray: [HighScore] = {
-        do {
-            guard let filePath = Bundle.main.path(forResource: "highScore", ofType: "json") else { return [] }
-            let localData = NSData.init(contentsOfFile: filePath)! as Data;
-            
-            let decoder = JSONDecoder();
-            let highScores = try decoder.decode([HighScore].self, from: localData);
-            
-            return highScores;
-        } catch {
-            print(error.localizedDescription);
-            return [];
-        }
-    }()
+    var highScoreArray: [HighScore] = anotherReadFromJSON();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,34 +28,14 @@ class HighScoreViewController: UIViewController {
         if let currentName = defaults.string(forKey: PlayerNameKey){
             let currentHighScore = HighScore(playerName: currentName, score: defaults.integer(forKey: "Score"));
             highScoreArray.append(currentHighScore);
-            saveToJSON(highScoreArray);
+            anotherSaveToJSON(highScoreArray);
             
             // Empty the User Defaults - including previous game settings
-            defaults.dictionaryRepresentation().keys.forEach(defaults.removeObject(forKey:));
+//            defaults.dictionaryRepresentation().keys.forEach(defaults.removeObject(forKey:));
         } else {
             print("No new game data");
         }
         
-    }
-    
-    func readFromJSON() {
-        do {
-            guard let filePath = Bundle.main.path(forResource: "highScore", ofType: "json") else { return }
-            let localData = NSData.init(contentsOfFile: filePath)! as Data;
-            highScoreArray = try JSONDecoder().decode([HighScore].self, from: localData);
-        } catch {
-            print("error:\(error)");
-        }
-    }
-    
-    func saveToJSON(_ highScoreArray: [HighScore]) {
-        do {
-            guard let fileURL = Bundle.main.url(forResource: "highScore", withExtension: "json") else { return }
-            let encoder = JSONEncoder();
-            try encoder.encode(highScoreArray).write(to: fileURL);
-        } catch {
-            print(error.localizedDescription);
-        }
     }
     
 }
